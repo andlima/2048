@@ -41,7 +41,10 @@ LocalStorageManager.prototype.localStorageSupported = function () {
 
 // Best score getters/setters
 LocalStorageManager.prototype.getBestScore = function () {
-  return this.storage.getItem(this.bestScoreKey) || -Infinity;
+  var bs = this.storage.getItem(this.bestScoreKey);
+  if (bs == 0)
+    bs = -9999;
+  return bs || -9999;
 };
 
 LocalStorageManager.prototype.setBestScore = function (score) {
